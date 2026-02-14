@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-
-
-
 /* Custom Animations */
 @keyframes bounce-subtle {
   0%, 100% { transform: translateY(0); }
@@ -209,58 +206,201 @@
 
 .delay-200 {
   animation-delay: 0.2s;
-} 
-
-
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-.animate-float-slow {
-  animation: float 4s ease-in-out infinite;
-}
-.animate-bounce-slow {
-  animation: bounce 2s infinite;
-}
-@keyframes slide-up {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-.animate-slide-up {
-  animation: slide-up 0.3s ease-out;
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.animate-fade-in {
-  animation: fade-in 0.2s ease-out;
-}
-/* Add this at the end of your globals.css */
-.duration-3000 {
-  transition-duration: 3000ms;
-}
-/* Add these animations if not already present */
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.animate-fade-in {
-  animation: fade-in 0.2s ease-out;
-}
-
-@keyframes slide-up {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-.animate-slide-up {
-  animation: slide-up 0.3s ease-out;
 }
 
 .duration-3000 {
   transition-duration: 3000ms;
+}
+
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+}
+
+/* Background colors */
+.dark body {
+  background-color: #1a1a1a;
+}
+
+.dark .bg-\[\#FFE5D9\] {
+  background-color: #2d2d2d !important;
+}
+
+.dark .bg-\[\#FFB5B5\] {
+  background-color: #4a4a4a !important;
+}
+
+.dark .bg-\[\#A0E7E5\] {
+  background-color: #3a4a4a !important;
+}
+
+.dark .bg-\[\#FFD966\] {
+  background-color: #4a4a3a !important;
+}
+
+.dark .bg-\[\#FF8A8A\] {
+  background-color: #4a3a3a !important;
+}
+
+.dark .bg-\[\#7fd1cf\] {
+  background-color: #3a4a4a !important;
+}
+
+.dark .bg-\[\#FFB347\] {
+  background-color: #4a4a3a !important;
+}
+
+.dark .bg-\[\#FF6B6B\] {
+  background-color: #4a3a3a !important;
+}
+
+.dark .bg-\[\#6B8EFF\] {
+  background-color: #3a3a4a !important;
+}
+
+/* Text colors */
+.dark .text-black {
+  color: #f0f0f0 !important;
+}
+
+.dark .text-gray-600 {
+  color: #b0b0b0 !important;
+}
+
+.dark .text-gray-700 {
+  color: #c0c0c0 !important;
+}
+
+.dark .text-gray-500 {
+  color: #a0a0a0 !important;
+}
+
+/* Border colors */
+.dark .border-black {
+  border-color: #606060 !important;
+}
+
+/* ✅ FIXED: Removed wildcard selectors, added specific classes */
+.dark .shadow-\[6px_6px_0_black\] {
+  box-shadow: 6px 6px 0 #606060 !important;
+}
+
+.dark .shadow-\[8px_8px_0_black\] {
+  box-shadow: 8px 8px 0 #606060 !important;
+}
+
+.dark .shadow-\[10px_10px_0_black\] {
+  box-shadow: 10px 10px 0 #606060 !important;
+}
+
+.dark .shadow-\[12px_12px_0_black\] {
+  box-shadow: 12px 12px 0 #606060 !important;
+}
+
+.dark .shadow-\[15px_15px_0_black\] {
+  box-shadow: 15px 15px 0 #606060 !important;
+}
+
+.dark .shadow-\[20px_20px_0_black\] {
+  box-shadow: 20px 20px 0 #606060 !important;
+}
+
+.dark .shadow-\[25px_25px_0_black\] {
+  box-shadow: 25px 25px 0 #606060 !important;
+}
+
+.dark .shadow-\[4px_4px_0_black\] {
+  box-shadow: 4px 4px 0 #606060 !important;
+}
+
+.dark .shadow-\[5px_5px_0_black\] {
+  box-shadow: 5px 5px 0 #606060 !important;
+}
+
+.dark .shadow-\[6px_6px_0_#FFD966\] {
+  box-shadow: 6px 6px 0 #4a4a3a !important;
+}
+
+.dark .shadow-\[8px_8px_0_#FFD966\] {
+  box-shadow: 8px 8px 0 #4a4a3a !important;
+}
+
+.dark .shadow-\[10px_10px_0_#FFD966\] {
+  box-shadow: 10px 10px 0 #4a4a3a !important;
+}
+
+.dark .shadow-\[12px_12px_0_#FFD966\] {
+  box-shadow: 12px 12px 0 #4a4a3a !important;
+}
+
+.dark .shadow-\[4px_4px_0_white\] {
+  box-shadow: 4px 4px 0 #404040 !important;
+}
+
+.dark .shadow-\[6px_6px_0_white\] {
+  box-shadow: 6px 6px 0 #404040 !important;
+}
+
+.dark .shadow-\[8px_8px_0_white\] {
+  box-shadow: 8px 8px 0 #404040 !important;
+}
+
+.dark .shadow-\[10px_10px_0_white\] {
+  box-shadow: 10px 10px 0 #404040 !important;
+}
+
+/* Card backgrounds */
+.dark .bg-white {
+  background-color: #3a3a3a !important;
+}
+
+.dark .bg-white\/90 {
+  background-color: rgba(58, 58, 58, 0.9) !important;
+}
+
+.dark .bg-\[\#FFE5D9\]\/90 {
+  background-color: rgba(45, 45, 45, 0.9) !important;
+}
+
+/* Form inputs */
+.dark input, .dark select, .dark textarea {
+  background-color: #4a4a4a !important;
+  color: #f0f0f0 !important;
+  border-color: #606060 !important;
+}
+
+.dark input::placeholder, .dark textarea::placeholder {
+  color: #909090 !important;
+}
+
+/* Buttons */
+.dark button.bg-\[\#A0E7E5\] {
+  background-color: #3a5a5a !important;
+}
+
+.dark button.bg-\[\#FFB5B5\] {
+  background-color: #5a3a3a !important;
+}
+
+.dark button.bg-\[\#FFD966\] {
+  background-color: #5a5a3a !important;
+}
+
+/* Popups and modals */
+.dark .bg-\[\#FFE5D9\] {
+  background-color: #2d2d2d !important;
+}
+
+/* Gradient backgrounds */
+.dark .bg-gradient-to-r {
+  --tw-gradient-from: #3a3a3a !important;
+  --tw-gradient-to: #4a4a4a !important;
+}
+
+.dark .from-\[\#FFB5B5\] {
+  --tw-gradient-from: #5a3a3a !important;
+}
+
+.dark .to-\[\#A0E7E5\] {
+  --tw-gradient-to: #3a5a5a !important;
 }
