@@ -1,7 +1,6 @@
 
 
 
-
 // 'use client';
 
 // import React, { useState } from 'react';
@@ -11,13 +10,14 @@
 // import SpinWheel from './SpinWheel';
 // import ThemeToggle from './ThemeToggle';
 // import { useLanguage } from '../context/LanguageContext';
-// import { useWishlist } from '../context/WishlistContext';
+// import { useWishlist } from '../context/WishListContext';
 // const Navbar = () => {
 //   const [isOpen, setIsOpen] = useState(false);
 //   const [showSpinWheel, setShowSpinWheel] = useState(false);
 //   const pathname = usePathname();
 //   const { t } = useLanguage();
 //   const { wishlist } = useWishlist(); 
+  
 //   const isActive = (path) => pathname === path;
 
 //   const handleWin = (prize) => {
@@ -76,13 +76,25 @@
 //             🎡 <span className="hidden lg:inline">Spin & Win</span>
 //           </button>
 
-//           {/* 2. THEME TOGGLE BUTTON - DARK MODE */}
+//           {/* 2. THEME TOGGLE BUTTON */}
 //           <ThemeToggle />
 
-//           {/* 3. COUNTRY SELECTOR */}
+//           {/* ✅ 3. WISHLIST BUTTON - ADD THIS */}
+//           <Link href="/wishlist" className="relative">
+//             <button className="hidden sm:block font-['Fredoka'] text-sm lg:text-base font-bold bg-[#FFB5B5] px-3 py-1.5 rounded-full border-3 border-black shadow-[4px_4px_0_black] hover:scale-95 transition-all">
+//               ❤️
+//               {wishlist.length > 0 && (
+//                 <span className="absolute -top-2 -right-2 bg-[#FFD966] w-5 h-5 rounded-full border-2 border-black text-xs flex items-center justify-center font-bold">
+//                   {wishlist.length}
+//                 </span>
+//               )}
+//             </button>
+//           </Link>
+
+//           {/* 4. COUNTRY SELECTOR */}
 //           <CountrySelector />
           
-//           {/* 4. ORDER BUTTON */}
+//           {/* 5. ORDER BUTTON */}
 //           <Link href="/order">
 //             <button className="hidden sm:block font-['Fredoka'] text-sm lg:text-base xl:text-lg font-bold bg-[#A0E7E5] text-black px-4 lg:px-5 py-1.5 lg:py-2 border-3 border-black rounded-[40px] shadow-[4px_4px_0_black] hover:scale-95 hover:shadow-[2px_2px_0_black] transition-all duration-200 whitespace-nowrap">
 //               {t?.nav?.order || 'Order'} <span className="hidden lg:inline">Now</span> 🛵
@@ -136,9 +148,16 @@
 //                 </button>
 //               </li>
 
-//               {/* Mobile Theme Toggle - DARK MODE */}
+//               {/* Mobile Theme Toggle */}
 //               <li className="px-4 py-2">
 //                 <ThemeToggle />
+//               </li>
+
+//               {/* ✅ Mobile Wishlist Button - ADD THIS */}
+//               <li>
+//                 <Link href="/wishlist" className="block font-['Fredoka'] text-lg font-semibold px-4 py-2.5 rounded-[25px] hover:bg-[#FFD966] hover:border-2 hover:border-black hover:shadow-[3px_3px_0_black] transition-all" onClick={() => setIsOpen(false)}>
+//                   ❤️ Wishlist {wishlist.length > 0 && `(${wishlist.length})`}
+//                 </Link>
 //               </li>
               
 //               <li className="mt-2 pt-2 border-t-2 border-black/20">
@@ -164,7 +183,9 @@
 //   );
 // };
 
-// export default Navbar; 
+// export default Navbar;  
+
+
 
 
 
@@ -181,13 +202,18 @@ import SpinWheel from './SpinWheel';
 import ThemeToggle from './ThemeToggle';
 import { useLanguage } from '../context/LanguageContext';
 import { useWishlist } from '../context/WishListContext';
+import { useAuth } from '../context/AuthContext';      // ✅ ADD THIS
+import AuthPopup from './AuthPopup';                    // ✅ ADD THIS
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showSpinWheel, setShowSpinWheel] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);      // ✅ ADD THIS
   const pathname = usePathname();
   const { t } = useLanguage();
   const { wishlist } = useWishlist(); 
-  
+  const { user, logout } = useAuth();                    // ✅ ADD THIS
+
   const isActive = (path) => pathname === path;
 
   const handleWin = (prize) => {
@@ -249,7 +275,7 @@ const Navbar = () => {
           {/* 2. THEME TOGGLE BUTTON */}
           <ThemeToggle />
 
-          {/* ✅ 3. WISHLIST BUTTON - ADD THIS */}
+          {/* 3. WISHLIST BUTTON */}
           <Link href="/wishlist" className="relative">
             <button className="hidden sm:block font-['Fredoka'] text-sm lg:text-base font-bold bg-[#FFB5B5] px-3 py-1.5 rounded-full border-3 border-black shadow-[4px_4px_0_black] hover:scale-95 transition-all">
               ❤️
@@ -261,10 +287,27 @@ const Navbar = () => {
             </button>
           </Link>
 
-          {/* 4. COUNTRY SELECTOR */}
+          {/* 4. AUTH BUTTON - LOGIN/LOGOUT */}
+          {user ? (
+            <button
+              onClick={logout}
+              className="hidden sm:block font-['Fredoka'] text-sm lg:text-base font-bold bg-[#FFB5B5] px-3 py-1.5 rounded-full border-3 border-black shadow-[4px_4px_0_black] hover:scale-95 transition-all"
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              onClick={() => setShowAuth(true)}
+              className="hidden sm:block font-['Fredoka'] text-sm lg:text-base font-bold bg-[#FFB5B5] px-3 py-1.5 rounded-full border-3 border-black shadow-[4px_4px_0_black] hover:scale-95 transition-all"
+            >
+              Login
+            </button>
+          )}
+
+          {/* 5. COUNTRY SELECTOR */}
           <CountrySelector />
           
-          {/* 5. ORDER BUTTON */}
+          {/* 6. ORDER BUTTON */}
           <Link href="/order">
             <button className="hidden sm:block font-['Fredoka'] text-sm lg:text-base xl:text-lg font-bold bg-[#A0E7E5] text-black px-4 lg:px-5 py-1.5 lg:py-2 border-3 border-black rounded-[40px] shadow-[4px_4px_0_black] hover:scale-95 hover:shadow-[2px_2px_0_black] transition-all duration-200 whitespace-nowrap">
               {t?.nav?.order || 'Order'} <span className="hidden lg:inline">Now</span> 🛵
@@ -323,11 +366,33 @@ const Navbar = () => {
                 <ThemeToggle />
               </li>
 
-              {/* ✅ Mobile Wishlist Button - ADD THIS */}
+              {/* Mobile Wishlist Button */}
               <li>
                 <Link href="/wishlist" className="block font-['Fredoka'] text-lg font-semibold px-4 py-2.5 rounded-[25px] hover:bg-[#FFD966] hover:border-2 hover:border-black hover:shadow-[3px_3px_0_black] transition-all" onClick={() => setIsOpen(false)}>
                   ❤️ Wishlist {wishlist.length > 0 && `(${wishlist.length})`}
                 </Link>
+              </li>
+
+              {/* Mobile Auth Button */}
+              <li>
+                {user ? (
+                  <button
+                    onClick={logout}
+                    className="w-full text-left font-['Fredoka'] text-lg font-semibold px-4 py-2.5 rounded-[25px] hover:bg-[#FFD966] hover:border-2 hover:border-black hover:shadow-[3px_3px_0_black] transition-all"
+                  >
+                    Logout ({user.email})
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setShowAuth(true);
+                      setIsOpen(false);
+                    }}
+                    className="w-full text-left font-['Fredoka'] text-lg font-semibold px-4 py-2.5 rounded-[25px] hover:bg-[#FFD966] hover:border-2 hover:border-black hover:shadow-[3px_3px_0_black] transition-all"
+                  >
+                    Login / Sign Up
+                  </button>
+                )}
               </li>
               
               <li className="mt-2 pt-2 border-t-2 border-black/20">
@@ -349,6 +414,9 @@ const Navbar = () => {
           onWin={handleWin}
         />
       )}
+
+      {/* Auth Popup */}
+      {showAuth && <AuthPopup onClose={() => setShowAuth(false)} />}
     </>
   );
 };

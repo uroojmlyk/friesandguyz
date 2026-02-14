@@ -1,12 +1,12 @@
 
 
+
 // import { Fredoka } from 'next/font/google';
 // import './globals.css';
 // import EmailPopup from './components/EmailPopup';
 // import { LanguageProvider } from './context/LanguageContext';
 // import { ThemeProvider } from './context/ThemeContext';
 // import { WishlistProvider } from './context/WishListContext';
-
 // const fredoka = Fredoka({ 
 //   subsets: ['latin'],
 //   variable: '--font-fredoka',
@@ -24,16 +24,17 @@
 //       <body className={fredoka.variable} style={{ fontFamily: 'var(--font-fredoka), sans-serif' }}>
 //         <ThemeProvider>
 //           <LanguageProvider>
-//             <WishlistProvider>    {/* ✅ ADD THIS */}
+//             <WishlistProvider>    {/* ✅ Provider ka naam bhi consistent rakhna */}
 //               {children}
 //               <EmailPopup />
-//             </WishlistProvider>    {/* ✅ ADD THIS */}
+//             </WishlistProvider>
 //           </LanguageProvider>
 //         </ThemeProvider>
 //       </body>
 //     </html>
 //   );
-// }  
+// } 
+
 
 
 
@@ -46,6 +47,7 @@ import EmailPopup from './components/EmailPopup';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { WishlistProvider } from './context/WishListContext';
+import { AuthProvider } from './context/AuthContext';
 const fredoka = Fredoka({ 
   subsets: ['latin'],
   variable: '--font-fredoka',
@@ -63,10 +65,12 @@ export default function RootLayout({ children }) {
       <body className={fredoka.variable} style={{ fontFamily: 'var(--font-fredoka), sans-serif' }}>
         <ThemeProvider>
           <LanguageProvider>
-            <WishlistProvider>    {/* ✅ Provider ka naam bhi consistent rakhna */}
-              {children}
-              <EmailPopup />
-            </WishlistProvider>
+            <AuthProvider>                {/* ✅ ADD THIS */}
+              <WishlistProvider>           {/* ✅ small 'l' wala */}
+                {children}
+                <EmailPopup />
+              </WishlistProvider>
+            </AuthProvider>                {/* ✅ ADD THIS */}
           </LanguageProvider>
         </ThemeProvider>
       </body>
