@@ -1,344 +1,3 @@
-// 'use client';
-
-// import React, { createContext, useContext, useState } from 'react';
-
-// // Create Context
-// const LanguageContext = createContext();
-
-// // Translations Data
-// const translations = {
-//   // English (US)
-//   US: {
-//     nav: {
-//       home: 'Home',
-//       menu: 'Menu',
-//       offers: 'Offers',
-//       contact: 'Contact',
-//       order: 'Order Now'
-//     },
-//     hero: {
-//       tasty: 'TASTY',
-//       burger: 'BURGER',
-//       delivery: 'DELIVERY',
-//       tagline: '🍟 Hot & Crispy • 30 Min Delivery • Free Fries',
-//       orderNow: 'Order Now',
-//       viewMenu: 'View Menu',
-//       happyCustomers: 'Happy Customers',
-//       foodItems: 'Food Items',
-//       rating: 'Rating'
-//     },
-//     menu: {
-//       ourMenu: 'OUR MENU',
-//       tastyFood: 'Tasty food, fast delivery',
-//       cart: 'Cart',
-//       emptyCart: 'Cart is empty!',
-//       addFood: 'Add some yummy food',
-//       total: 'Total',
-//       checkout: 'Checkout',
-//       allItems: 'All Items',
-//       limitedOffer: 'LIMITED OFFER',
-//       freeDelivery: 'Free Delivery on $30+',
-//       useCode: 'Use code'
-//     },
-//     offers: {
-//       hotOffers: 'HOT OFFERS',
-//       grabThem: 'Grab them before they\'re gone!',
-//       limitedTime: 'Limited Time Offers',
-//       validTill: 'Valid till',
-//       claimOffer: 'Claim Offer',
-//       weekendSpecial: 'WEEKEND SPECIAL',
-//       firstOrder: '50% OFF ON FIRST ORDER',
-//       newCustomers: 'New customers only'
-//     },
-//     contact: {
-//       getInTouch: 'GET IN TOUCH',
-//       wedLove: 'We\'d love to hear from you!',
-//       yourName: 'Your Name',
-//       email: 'Email',
-//       subject: 'Subject',
-//       message: 'Message',
-//       sendMessage: 'Send Message',
-//       visitUs: 'Visit Us',
-//       callUs: 'Call Us',
-//       emailUs: 'Email Us',
-//       openingHours: 'Opening Hours',
-//       monFri: 'Monday - Friday',
-//       satSun: 'Saturday - Sunday',
-//       freeDelivery: 'Free delivery on orders $30+'
-//     },
-//     order: {
-//       orderNow: 'ORDER NOW',
-//       fastDelivery: 'Fast delivery • 30 min or free',
-//       personalInfo: 'Personal Information',
-//       deliveryAddress: 'Delivery Address',
-//       selectItem: 'Select Item',
-//       quantity: 'Quantity',
-//       paymentMethod: 'Payment Method',
-//       specialInstructions: 'Special Instructions',
-//       placeOrder: 'Place Order',
-//       securePayment: 'Secure Payment',
-//       freshFood: 'Fresh Food'
-//     },
-//     footer: {
-//       servingHappiness: 'Serving happiness since 2024',
-//       quickLinks: 'Quick Links',
-//       contactUs: 'Contact Us',
-//       openingHours: 'Opening Hours',
-//       rights: 'All rights reserved',
-//       madeWith: 'Made with'
-//     },
-//     countrySelector: {
-//       search: 'Search country...',
-//       countriesAvailable: 'countries available'
-//     },
-//     emailPopup: {
-//       getDiscount: 'Get 20% OFF!',
-//       subscribe: 'Subscribe to get exclusive offers and deals',
-//       enterEmail: 'Enter your email',
-//       subscribeNow: 'Subscribe Now',
-//       noSpam: 'No spam, only yummy food updates!',
-//       thankYou: 'Thank You!',
-//       subscribed: 'You\'re now subscribed to our newsletter'
-//     }
-//   },
-
-//   // Hindi (India)
-//   IN: {
-//     nav: {
-//       home: 'होम',
-//       menu: 'मेनू',
-//       offers: 'ऑफ़र',
-//       contact: 'संपर्क',
-//       order: 'ऑर्डर करें'
-//     },
-//     hero: {
-//       tasty: 'स्वादिष्ट',
-//       burger: 'बर्गर',
-//       delivery: 'डिलीवरी',
-//       tagline: '🍟 गरमागरम • 30 मिनट डिलीवरी • मुफ्त फ्राइज़',
-//       orderNow: 'अभी ऑर्डर करें',
-//       viewMenu: 'मेनू देखें',
-//       happyCustomers: 'खुश ग्राहक',
-//       foodItems: 'खाद्य पदार्थ',
-//       rating: 'रेटिंग'
-//     },
-//     menu: {
-//       ourMenu: 'हमारा मेनू',
-//       tastyFood: 'स्वादिष्ट खाना, तेज़ डिलीवरी',
-//       cart: 'कार्ट',
-//       emptyCart: 'कार्ट खाली है!',
-//       addFood: 'कुछ स्वादिष्ट खाना डालें',
-//       total: 'कुल',
-//       checkout: 'चेकआउट',
-//       allItems: 'सभी आइटम',
-//       limitedOffer: 'सीमित ऑफर',
-//       freeDelivery: '$30+ पर मुफ्त डिलीवरी',
-//       useCode: 'कोड का उपयोग करें'
-//     },
-//     offers: {
-//       hotOffers: 'हॉट ऑफ़र',
-//       grabThem: 'जल्दी करो, ऑफ़र खत्म होने वाले हैं!',
-//       limitedTime: 'सीमित समय के ऑफर',
-//       validTill: 'मान्य तक',
-//       claimOffer: 'ऑफर प्राप्त करें',
-//       weekendSpecial: 'वीकेंड स्पेशल',
-//       firstOrder: 'पहले ऑर्डर पर 50% छूट',
-//       newCustomers: 'केवल नए ग्राहकों के लिए'
-//     },
-//     contact: {
-//       getInTouch: 'संपर्क करें',
-//       wedLove: 'हम आपसे सुनना पसंद करेंगे!',
-//       yourName: 'आपका नाम',
-//       email: 'ईमेल',
-//       subject: 'विषय',
-//       message: 'संदेश',
-//       sendMessage: 'संदेश भेजें',
-//       visitUs: 'हमसे मिलें',
-//       callUs: 'कॉल करें',
-//       emailUs: 'ईमेल करें',
-//       openingHours: 'खुलने का समय',
-//       monFri: 'सोमवार - शुक्रवार',
-//       satSun: 'शनिवार - रविवार',
-//       freeDelivery: '$30+ के ऑर्डर पर मुफ्त डिलीवरी'
-//     },
-//     order: {
-//       orderNow: 'अभी ऑर्डर करें',
-//       fastDelivery: 'तेज़ डिलीवरी • 30 मिनट या मुफ्त',
-//       personalInfo: 'व्यक्तिगत जानकारी',
-//       deliveryAddress: 'डिलीवरी पता',
-//       selectItem: 'आइटम चुनें',
-//       quantity: 'मात्रा',
-//       paymentMethod: 'भुगतान विधि',
-//       specialInstructions: 'विशेष निर्देश',
-//       placeOrder: 'ऑर्डर करें',
-//       securePayment: 'सुरक्षित भुगतान',
-//       freshFood: 'ताजा खाना'
-//     },
-//     footer: {
-//       servingHappiness: '2024 से खुशियाँ बांट रहे',
-//       quickLinks: 'त्वरित लिंक',
-//       contactUs: 'संपर्क करें',
-//       openingHours: 'खुलने का समय',
-//       rights: 'सर्वाधिकार सुरक्षित',
-//       madeWith: 'के साथ बनाया'
-//     },
-//     countrySelector: {
-//       search: 'देश खोजें...',
-//       countriesAvailable: 'देश उपलब्ध'
-//     },
-//     emailPopup: {
-//       getDiscount: '20% छूट पाएं!',
-//       subscribe: 'विशेष ऑफर और डील पाने के लिए सब्सक्राइब करें',
-//       enterEmail: 'अपना ईमेल डालें',
-//       subscribeNow: 'अभी सब्सक्राइब करें',
-//       noSpam: 'कोई स्पैम नहीं, केवल स्वादिष्ट खाने के अपडेट!',
-//       thankYou: 'धन्यवाद!',
-//       subscribed: 'आप हमारे न्यूज़लेटर से जुड़ गए हैं'
-//     }
-//   },
-
-//   // French (France)
-//   FR: {
-//     nav: {
-//       home: 'Accueil',
-//       menu: 'Menu',
-//       offers: 'Offres',
-//       contact: 'Contact',
-//       order: 'Commander'
-//     },
-//     hero: {
-//       tasty: 'DÉLICIEUX',
-//       burger: 'BURGER',
-//       delivery: 'LIVRAISON',
-//       tagline: '🍟 Chaud & Croquant • Livraison 30 Min • Frites Gratuites',
-//       orderNow: 'Commander',
-//       viewMenu: 'Voir Menu',
-//       happyCustomers: 'Clients Satisfaits',
-//       foodItems: 'Plats',
-//       rating: 'Note'
-//     },
-//     menu: {
-//       ourMenu: 'NOTRE MENU',
-//       tastyFood: 'Nourriture savoureuse, livraison rapide',
-//       cart: 'Panier',
-//       emptyCart: 'Panier vide!',
-//       addFood: 'Ajoutez de délicieux plats',
-//       total: 'Total',
-//       checkout: 'Paiement',
-//       allItems: 'Tous les articles',
-//       limitedOffer: 'OFFRE LIMITÉE',
-//       freeDelivery: 'Livraison gratuite dès 30€',
-//       useCode: 'Utilisez le code'
-//     },
-//     offers: {
-//       hotOffers: 'OFFRES SPÉCIALES',
-//       grabThem: 'Ne les manquez pas!',
-//       limitedTime: 'Offres à durée limitée',
-//       validTill: 'Valable jusqu\'au',
-//       claimOffer: 'Profiter',
-//       weekendSpecial: 'SPÉCIAL WEEK-END',
-//       firstOrder: '50% DE RÉDUCTION',
-//       newCustomers: 'Nouveaux clients uniquement'
-//     },
-//     contact: {
-//       getInTouch: 'CONTACTEZ-NOUS',
-//       wedLove: 'Nous aimerions avoir de vos nouvelles!',
-//       yourName: 'Votre nom',
-//       email: 'Email',
-//       subject: 'Sujet',
-//       message: 'Message',
-//       sendMessage: 'Envoyer',
-//       visitUs: 'Nous rendre visite',
-//       callUs: 'Appeler',
-//       emailUs: 'Envoyer un email',
-//       openingHours: 'Horaires',
-//       monFri: 'Lundi - Vendredi',
-//       satSun: 'Samedi - Dimanche',
-//       freeDelivery: 'Livraison gratuite dès 30€'
-//     },
-//     order: {
-//       orderNow: 'COMMANDER',
-//       fastDelivery: 'Livraison rapide • 30 min ou gratuit',
-//       personalInfo: 'Informations',
-//       deliveryAddress: 'Adresse',
-//       selectItem: 'Choisir',
-//       quantity: 'Quantité',
-//       paymentMethod: 'Paiement',
-//       specialInstructions: 'Instructions',
-//       placeOrder: 'Valider',
-//       securePayment: 'Paiement sécurisé',
-//       freshFood: 'Produits frais'
-//     },
-//     footer: {
-//       servingHappiness: 'Service depuis 2024',
-//       quickLinks: 'Liens rapides',
-//       contactUs: 'Contact',
-//       openingHours: 'Horaires',
-//       rights: 'Tous droits réservés',
-//       madeWith: 'Fait avec'
-//     },
-//     countrySelector: {
-//       search: 'Rechercher...',
-//       countriesAvailable: 'pays disponibles'
-//     },
-//     emailPopup: {
-//       getDiscount: '-20%!',
-//       subscribe: 'Abonnez-vous',
-//       enterEmail: 'Votre email',
-//       subscribeNow: 'S\'abonner',
-//       noSpam: 'Pas de spam',
-//       thankYou: 'Merci!',
-//       subscribed: 'Abonné'
-//     }
-//   },
-
-//   // Add more languages as needed
-//   // Spanish, German, Italian, etc.
-// };
-
-// export function LanguageProvider({ children }) {
-//   const [currentLanguage, setCurrentLanguage] = useState('US');
-
-//   const changeLanguage = (countryCode) => {
-//     setCurrentLanguage(countryCode);
-//     // Save to localStorage
-//     localStorage.setItem('preferredLanguage', countryCode);
-//   };
-
-//   // Load saved language on mount
-//   React.useEffect(() => {
-//     const saved = localStorage.getItem('preferredLanguage');
-//     if (saved && translations[saved]) {
-//       setCurrentLanguage(saved);
-//     }
-//   }, []);
-
-//   const t = translations[currentLanguage] || translations.US;
-
-//   return (
-//     <LanguageContext.Provider value={{ 
-//       t, 
-//       currentLanguage, 
-//       changeLanguage,
-//       languages: Object.keys(translations).map(code => ({
-//         code,
-//         flag: code === 'US' ? '🇺🇸' : code === 'IN' ? '🇮🇳' : code === 'FR' ? '🇫🇷' : '🇺🇸',
-//         name: code === 'US' ? 'English' : code === 'IN' ? 'हिन्दी' : code === 'FR' ? 'Français' : 'English'
-//       }))
-//     }}>
-//       {children}
-//     </LanguageContext.Provider>
-//   );
-// }
-
-// export function useLanguage() {
-//   return useContext(LanguageContext);
-// } 
-
-
-
-
-
 
 
 
@@ -439,6 +98,23 @@ const translations = {
       search: 'Search country...',
       countriesAvailable: 'countries available'
     },
+
+ wishlist: {
+    title: 'MY WISHLIST',
+    subtitle: 'Save your favorite items for later',
+    empty: 'Your wishlist is empty',
+    emptyDesc: 'Save items you love and order them later!',
+    browseMenu: 'Browse Menu',
+    itemsSaved: 'items saved',
+    itemSaved: 'item saved',
+    total: 'Total',
+    remove: 'Remove',
+    view: 'View',
+    order: 'Order',
+    continueShopping: 'Continue Shopping',
+    orderAll: 'Order All',
+    loginPrompt: 'Login to save your wishlist across devices!'
+  },
     emailPopup: {
       getDiscount: 'Get 20% OFF!',
       subscribe: 'Subscribe to get exclusive offers and deals',
@@ -459,6 +135,22 @@ const translations = {
       contact: 'संपर्क',
       order: 'ऑर्डर करें'
     },
+     wishlist: {
+    title: 'मेरी इच्छा सूची',
+    subtitle: 'अपनी पसंदीदा वस्तुओं को बाद के लिए सहेजें',
+    empty: 'आपकी इच्छा सूची खाली है',
+    emptyDesc: 'अपनी पसंदीदा वस्तुओं को सहेजें और बाद में ऑर्डर करें!',
+    browseMenu: 'मेनू देखें',
+    itemsSaved: 'आइटम सहेजे गए',
+    itemSaved: 'आइटम सहेजा गया',
+    total: 'कुल',
+    remove: 'हटाएं',
+    view: 'देखें',
+    order: 'ऑर्डर करें',
+    continueShopping: 'खरीदारी जारी रखें',
+    orderAll: 'सभी ऑर्डर करें',
+    loginPrompt: 'अपनी इच्छा सूची को सभी डिवाइस पर सहेजने के लिए लॉगिन करें!'
+  },
     hero: {
       tasty: 'स्वादिष्ट',
       burger: 'बर्गर',
@@ -572,6 +264,22 @@ const translations = {
       chefsSpecial: 'شیف اسپیشل',
       hotDeals: 'اس ہفتے کے ہاٹ ڈیلز'
     },
+     wishlist: {
+    title: 'میری خواہش کی فہرست',
+    subtitle: 'اپنی پسندیدہ اشیاء بعد کے لیے محفوظ کریں',
+    empty: 'آپ کی خواہش کی فہرست خالی ہے',
+    emptyDesc: 'اپنی پسندیدہ اشیاء محفوظ کریں اور بعد میں آرڈر کریں!',
+    browseMenu: 'مینو دیکھیں',
+    itemsSaved: 'اشیاء محفوظ شدہ',
+    itemSaved: 'آئٹم محفوظ شدہ',
+    total: 'کل',
+    remove: 'ہٹائیں',
+    view: 'دیکھیں',
+    order: 'آرڈر کریں',
+    continueShopping: 'خریداری جاری رکھیں',
+    orderAll: 'سب آرڈر کریں',
+    loginPrompt: 'اپنی خواہش کی فہرست کو تمام آلات پر محفوظ کرنے کے لیے لاگ ان کریں!'
+  },
     menu: {
       ourMenu: 'ہمارا مینو',
       tastyFood: 'لذیذ کھانا، تیز ڈیلیوری',

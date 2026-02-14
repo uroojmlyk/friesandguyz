@@ -1,15 +1,12 @@
 
 
-
-
-
-
-
 // import { Fredoka } from 'next/font/google';
 // import './globals.css';
-// import EmailPopup from './components/EmailPopup'; // ✅
+// import EmailPopup from './components/EmailPopup';
 // import { LanguageProvider } from './context/LanguageContext';
 // import { ThemeProvider } from './context/ThemeContext';
+// import { WishlistProvider } from './context/WishListContext';
+
 // const fredoka = Fredoka({ 
 //   subsets: ['latin'],
 //   variable: '--font-fredoka',
@@ -25,14 +22,18 @@
 //   return (
 //     <html lang="en">
 //       <body className={fredoka.variable} style={{ fontFamily: 'var(--font-fredoka), sans-serif' }}>
-//         <LanguageProvider>  {/* ✅ Provider yahan hona chahiye */}
-//           {children}
-//           <EmailPopup />
-//         </LanguageProvider>
+//         <ThemeProvider>
+//           <LanguageProvider>
+//             <WishlistProvider>    {/* ✅ ADD THIS */}
+//               {children}
+//               <EmailPopup />
+//             </WishlistProvider>    {/* ✅ ADD THIS */}
+//           </LanguageProvider>
+//         </ThemeProvider>
 //       </body>
 //     </html>
 //   );
-// } 
+// }  
 
 
 
@@ -43,8 +44,8 @@ import { Fredoka } from 'next/font/google';
 import './globals.css';
 import EmailPopup from './components/EmailPopup';
 import { LanguageProvider } from './context/LanguageContext';
-import { ThemeProvider } from './context/ThemeContext'; // ✅ Imported
-
+import { ThemeProvider } from './context/ThemeContext';
+import { WishlistProvider } from './context/WishListContext';
 const fredoka = Fredoka({ 
   subsets: ['latin'],
   variable: '--font-fredoka',
@@ -60,12 +61,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={fredoka.variable} style={{ fontFamily: 'var(--font-fredoka), sans-serif' }}>
-        <ThemeProvider>      {/* ✅ ADD THIS - Must wrap everything */}
+        <ThemeProvider>
           <LanguageProvider>
-            {children}
-            <EmailPopup />
+            <WishlistProvider>    {/* ✅ Provider ka naam bhi consistent rakhna */}
+              {children}
+              <EmailPopup />
+            </WishlistProvider>
           </LanguageProvider>
-        </ThemeProvider>      {/* ✅ ADD THIS */}
+        </ThemeProvider>
       </body>
     </html>
   );
